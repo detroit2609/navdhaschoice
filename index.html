@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Date Plan?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff3f7;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .card {
+      background: white;
+      max-width: 420px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      color: #e91e63;
+    }
+
+    button, select, input {
+      padding: 12px 18px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      background: #e91e63;
+      color: white;
+      cursor: pointer;
+    }
+
+    #noBtn {
+      position: absolute;
+      background: #555;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    select, input {
+      border: 1px solid #ccc;
+      width: 80%;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card" id="step1">
+  <h1>Would you like to go out with me this week?</h1>
+  <button onclick="goNext()">Yes</button>
+  <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No</button>
+  <p id="joke"></p>
+</div>
+
+<div class="card hidden" id="step2">
+  <h1>What would you like to grab?</h1>
+
+  <form action="https://formsubmit.co/apoorv.sinha2609@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="Date Plan Selected ❤️">
+    <input type="hidden" name="_captcha" value="false">
+
+    <select name="Plan" required>
+      <option value="">Select one</option>
+      <option>Coffee</option>
+      <option>Pizza</option>
+      <option>Movie</option>
+      <option>Random TP</option>
+    </select>
+
+    <br>
+
+    <label>Select a Date ❤️</label>
+    <br>
+    <input type="date" id="datePicker" name="Date" required>
+
+    <br>
+
+    <input type="text" name="Message" placeholder="Any special note?">
+
+    <br>
+
+    <button type="submit">Confirm Date ❤️</button>
+  </form>
+</div>
+
+<script>
+  function goNext() {
+    document.getElementById("step1").classList.add("hidden");
+    document.getElementById("step2").classList.remove("hidden");
+  }
+
+  function moveNo() {
+    const noBtn = document.getElementById("noBtn");
+    const joke = document.getElementById("joke");
+
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 80);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    joke.innerText = "EVM tampering detected. Yes, it is a biased poll 😌";
+  }
+
+    const datePicker = document.getElementById("datePicker");
+
+    const today = new Date();
+
+    const maxDate = new Date();
+    maxDate.setMonth(maxDate.getMonth() + 1);
+
+    datePicker.min = today.toISOString().split("T")[0];
+    datePicker.max = maxDate.toISOString().split("T")[0];
+
+</script>
+
+</body>
+</html>
